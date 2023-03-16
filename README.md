@@ -458,6 +458,52 @@ Side effects have common features which the most web applications need to perfor
     export default App;
 ---
 
+# Cleanup function:
+
+// import React, { useState, useEffect } from 'react'
+// const Useeffectcleanup = () => {
+//   const [counter, setCounter] = useState(0);
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setCounter((prev) => {
+//         return prev + 1;
+//       });
+//     }, 1000)
+//     return () => {
+//       clearInterval(interval);
+//       console.log("clearing interval");
+//     }
+//   }, [])
+//   return (
+//     <div>
+//       {counter}
+//     </div>
+//   )
+// }
+// export default Useeffectcleanup;
+
+
+App.js:
+
+import React ,{useState}from 'react'
+import Useeffectcleanup from "./Component/Useeffectcleanup";
+
+const App = () => {
+ const [isvisble,setIsvisble] =useState(true)
+ const  visible=()=>{
+  setIsvisble(false)
+ }
+  return (
+    <div>
+      {isvisble && <Useeffectcleanup/>}
+      
+      <button onClick={visible}>click me</button>
+    </div>
+  )
+}
+
+export default App
+
 # Question 18: What is UseReducer Hook ?(Implementation)
 This hook is a better alternative of the useState hook, as it is used when we want to attach a function along with handling the state or when we want to handle the state based on the previous values.
 Example:
